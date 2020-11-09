@@ -1,0 +1,35 @@
+@import "src/assets/styles/styles.scss";
+
+.card {
+  box-sizing: border-box;
+  padding: 1em;
+  // height: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  .card-top-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1em;
+    img {
+      width: 40px !important;
+      height: 40px !important;
+      border: solid $color-grey 1px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+  .card-country-container {
+    display: grid;
+    gap: 0.25em;
+  }
+  .card-data-container {
+    display: grid;
+    gap: 0.25em;
+    .stats-container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.25em;
+      align-items: center;
+    }
+  }
+}

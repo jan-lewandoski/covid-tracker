@@ -1,1 +1,7 @@
-<p>countries works!</p>
+<div class="countries-container">
+  <custom-country-card
+    *ngFor="let country of countriesData$ | async"
+    [country]="country"
+    class="clickable"
+  ></custom-country-card>
+</div>

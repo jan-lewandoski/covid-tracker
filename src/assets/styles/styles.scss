@@ -14,4 +14,7 @@ body {
   color: black !important;
   line-height: 20px !important;
   background-color: $color-white !important;
+  p {
+    margin: 0 !important;
+  }
 }

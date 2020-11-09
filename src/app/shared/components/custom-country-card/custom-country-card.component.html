@@ -1,0 +1,33 @@
+<div class="card mt-1 mb-1">
+  <div class="card-top-container">
+    <img [src]="country.countryInfo?.flag" />
+    <div class="card-country-container">
+      <p class="font-18-bold">{{ country.country }}</p>
+      <p class="font-14-normal">{{ country.continent }}</p>
+    </div>
+  </div>
+  <mat-divider class="mt-1 mb-1"></mat-divider>
+  <div class="card-data-container">
+    <div class="stats-container">
+      <span class="material-icons"> show_chart </span>
+      <p class="font-14-normal">Cases: {{ country.todayCases }}</p>
+    </div>
+    <div class="stats-container">
+      <span class="material-icons"> sentiment_very_dissatisfied </span>
+      <p class="font-14-normal">Deaths: {{ country.todayDeaths }}</p>
+    </div>
+    <div class="stats-container">
+      <span class="material-icons"> sentiment_satisfied </span>
+      <p class="font-14-normal">Recovered: {{ country.todayRecovered }}</p>
+    </div>
+    <mat-divider class="mt-1 mb-1"></mat-divider>
+    <div class="stats-container">
+      <span class="material-icons"> coronavirus </span>
+      <p class="font-14-normal">Active: {{ country.active }}</p>
+    </div>
+    <div class="stats-container">
+      <span class="material-icons"> local_hospital </span>
+      <p class="font-14-normal">Critical: {{ country.critical }}</p>
+    </div>
+  </div>
+</div>

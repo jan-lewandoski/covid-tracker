@@ -4,10 +4,18 @@ import { CustomHeaderComponent } from './components/custom-header/custom-header.
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { CustomCountryCardComponent } from './components/custom-country-card/custom-country-card.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
-  declarations: [CustomHeaderComponent],
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],
-  exports: [CustomHeaderComponent],
+  declarations: [CustomHeaderComponent, CustomCountryCardComponent],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+  ],
+  exports: [CustomHeaderComponent, CustomCountryCardComponent],
 })
 export class SharedModule {}

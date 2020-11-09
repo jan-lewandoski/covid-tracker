@@ -1,0 +1,6 @@
+.countries-container {
+  padding: 0 3em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2em;
+}
