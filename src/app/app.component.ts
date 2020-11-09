@@ -46,6 +46,7 @@ export class AppComponent implements OnInit {
       DashboardActions.setCurrentSidebarOption({ searchTerm: option })
     );
     if (this.isMobileView) this.hideSidebar();
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
   @HostListener('window:resize', ['$event'])

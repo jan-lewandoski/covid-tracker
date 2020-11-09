@@ -6,6 +6,7 @@
     [opened]="isSidebarOpened$ | async"
     [style.width]="isMobileView ? '250px' : '25%'"
     [style.position]="isMobileView ? 'fixed' : ''"
+    fixedInViewport="true"
   >
     <mat-nav-list *ngFor="let option of options">
       <a mat-list-item class="font-14-normal" (click)="changeOption(option)">{{
