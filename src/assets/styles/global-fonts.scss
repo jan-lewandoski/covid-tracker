@@ -1,0 +1,34 @@
+html {
+  font-size: 16px;
+  .font-30-bold {
+    font-family: "Quicksand" !important;
+    font-weight: bold !important;
+    font-size: 30px !important;
+    color: black !important;
+    line-height: 37px !important;
+  }
+  .font-24-normal {
+    font-family: "Quicksand" !important;
+    font-weight: normal !important;
+    font-size: 24px !important;
+    color: black !important;
+    line-height: 28px !important;
+  }
+  .font-18-normal {
+    font-family: "Quicksand" !important;
+    font-weight: normal !important;
+    font-size: 18px !important;
+    color: black !important;
+    line-height: 22px !important;
+  }
+  .font-14-normal {
+    font-family: "Quicksand" !important;
+    font-weight: normal !important;
+    font-size: 14px !important;
+    color: black !important;
+    line-height: 18px !important;
+  }
+  .font-color-primary {
+    color: $color-primary;
+  }
+}
