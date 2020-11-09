@@ -1,11 +1,19 @@
 <custom-header></custom-header>
 <mat-sidenav-container class="example-container">
   <mat-sidenav
-    mode="side"
+    (closedStart)="hideSidebar()"
+    [mode]="isMobileView ? 'over' : 'side'"
     [opened]="isSidebarOpened$ | async"
-    [style.width]="isMobileView ? '100%' : '300px'"
-    >Drawer content</mat-sidenav
+    [style.width]="isMobileView ? '250px' : '25%'"
+    [style.position]="isMobileView ? 'fixed' : ''"
   >
+    <mat-nav-list *ngFor="let option of options">
+      <a mat-list-item class="font-14-normal" (click)="changeOption(option)">{{
+        option
+      }}</a>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+  </mat-sidenav>
   <mat-sidenav-content>
     <div class="app-container">
       <router-outlet></router-outlet>

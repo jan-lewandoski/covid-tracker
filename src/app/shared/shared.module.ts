@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CustomCountryCardComponent } from './components/custom-country-card/custom-country-card.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 import { StoreModule } from '@ngrx/store';
 import { sidebarReducer } from './state/sidebar.reducer';
 
@@ -19,12 +20,14 @@ import { sidebarReducer } from './state/sidebar.reducer';
     MatIconModule,
     MatDividerModule,
     MatSidenavModule,
+    MatListModule,
     StoreModule.forFeature('sidebar', sidebarReducer),
   ],
   exports: [
     CustomHeaderComponent,
     CustomCountryCardComponent,
     MatSidenavModule,
+    MatListModule,
   ],
 })
 export class SharedModule {}

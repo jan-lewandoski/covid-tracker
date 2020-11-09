@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { getIsSidebarOpened } from './shared/state/sidebar.reducer';
 import { State } from './state/app.state';
+import * as DashboardActions from 'src/app/shared/state/sidebar.actions';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,20 @@ import { State } from './state/app.state';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  readonly MOBILE_WIDTH: number = 500;
+
   isSidebarOpened$ = new Observable<boolean>();
-  isMobileView: boolean;
+  isMobileView: boolean = window.innerWidth < this.MOBILE_WIDTH;
+
+  readonly options: string[] = [
+    'World',
+    'Europe',
+    'North America',
+    'South America',
+    'Australia/Oceania',
+    'Africa',
+    'Asia',
+  ];
 
   constructor(private store: Store<State>) {}
 
@@ -19,8 +32,24 @@ export class AppComponent implements OnInit {
     this.isSidebarOpened$ = this.store.select(getIsSidebarOpened);
   }
 
+  toggleSidebar() {
+    this.store.dispatch(DashboardActions.toggleSidebar());
+  }
+
+  hideSidebar() {
+    this.store.dispatch(DashboardActions.hideSidebar());
+  }
+
+  changeOption(option: string) {
+    if (option === 'World') option = '';
+    this.store.dispatch(
+      DashboardActions.setCurrentSidebarOption({ searchTerm: option })
+    );
+    if (this.isMobileView) this.hideSidebar();
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    this.isMobileView = window.innerWidth < 500;
+    this.isMobileView = window.innerWidth < this.MOBILE_WIDTH;
   }
 }

@@ -1,6 +1,10 @@
 <div class="countries-container">
   <custom-country-card
-    *ngFor="let country of countriesData$ | async"
+    *ngFor="
+      let country of countriesData$
+        | async
+        | search: 'continent, country':(searchQuery$ | async)
+    "
     [country]="country"
     class="clickable"
   ></custom-country-card>

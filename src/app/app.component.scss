@@ -1,8 +1,9 @@
 .app-container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
 }
 
-// ::ng-deep .mat-sidenav {
-//   width: 320px !important;
-// }
+.sidebar-options {
+  display: grid;
+  gap: 1em;
+}
