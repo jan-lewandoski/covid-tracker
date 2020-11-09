@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/state/app.state';
+import * as SidebarActions from '../../state/sidebar.actions';
 
 @Component({
   selector: 'custom-header',
@@ -6,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./custom-header.component.scss'],
 })
 export class CustomHeaderComponent implements OnInit {
-  constructor() {}
+  constructor(private store: Store<State>) {}
 
   ngOnInit(): void {}
+
+  toggleSidebar() {
+    this.store.dispatch(SidebarActions.toggleSidebar());
+  }
 }

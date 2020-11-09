@@ -6,6 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CustomCountryCardComponent } from './components/custom-country-card/custom-country-card.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { StoreModule } from '@ngrx/store';
+import { sidebarReducer } from './state/sidebar.reducer';
 
 @NgModule({
   declarations: [CustomHeaderComponent, CustomCountryCardComponent],
@@ -15,7 +18,13 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    MatSidenavModule,
+    StoreModule.forFeature('sidebar', sidebarReducer),
   ],
-  exports: [CustomHeaderComponent, CustomCountryCardComponent],
+  exports: [
+    CustomHeaderComponent,
+    CustomCountryCardComponent,
+    MatSidenavModule,
+  ],
 })
 export class SharedModule {}

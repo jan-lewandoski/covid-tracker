@@ -1,4 +1,14 @@
 <custom-header></custom-header>
-<div class="app-container">
-  <router-outlet></router-outlet>
-</div>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav
+    mode="side"
+    [opened]="isSidebarOpened$ | async"
+    [style.width]="isMobileView ? '100%' : '300px'"
+    >Drawer content</mat-sidenav
+  >
+  <mat-sidenav-content>
+    <div class="app-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
