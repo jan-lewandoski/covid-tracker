@@ -14,6 +14,13 @@ html {
     color: black !important;
     line-height: 28px !important;
   }
+  .font-20-bold {
+    font-family: "Quicksand" !important;
+    font-weight: bold !important;
+    font-size: 20px !important;
+    color: black !important;
+    line-height: 24px !important;
+  }
   .font-18-normal {
     font-family: "Quicksand" !important;
     font-weight: normal !important;
@@ -29,6 +36,9 @@ html {
     line-height: 18px !important;
   }
   .font-color-primary {
-    color: $color-primary;
+    color: $color-primary !important;
+  }
+  .font-color-white {
+    color: $color-white !important;
   }
 }
