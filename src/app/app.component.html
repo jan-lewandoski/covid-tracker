@@ -1,4 +1,3 @@
-<custom-spinner [isLoading$]="isLoading$"></custom-spinner>
 <custom-header></custom-header>
 <mat-sidenav-container class="example-container">
   <mat-sidenav
@@ -18,6 +17,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
+    <custom-spinner [isLoading$]="isLoading$"></custom-spinner>
     <div class="app-container">
       <router-outlet></router-outlet>
     </div>

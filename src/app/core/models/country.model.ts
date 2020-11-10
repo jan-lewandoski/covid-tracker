@@ -5,6 +5,4 @@ export interface Country {
   todayCases: number;
   todayDeaths: number;
   todayRecovered: number;
-  active: number;
-  critical: number;
 }
