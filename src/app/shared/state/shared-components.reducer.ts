@@ -72,7 +72,7 @@ export const sharedComponentsReducer = createReducer<SharedComponentsState>(
     }
   ),
   on(
-    SharedComponentsActions.setCurrentSidebarOption,
+    SharedComponentsActions.setCurrentSearchTerm,
     (state, action): SharedComponentsState => {
       return {
         ...state,
@@ -122,6 +122,15 @@ export const sharedComponentsReducer = createReducer<SharedComponentsState>(
       return {
         ...state,
         isMobileView: false,
+      };
+    }
+  ),
+  on(
+    SharedComponentsActions.disableSearchField,
+    (state): SharedComponentsState => {
+      return {
+        ...state,
+        isSearchFieldEnabled: false,
       };
     }
   )

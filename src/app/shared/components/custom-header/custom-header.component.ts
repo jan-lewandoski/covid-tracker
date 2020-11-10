@@ -12,6 +12,7 @@ import * as SharedComponentsActions from '../../state/shared-components.actions'
 import {
   getIsMobileView,
   getIsSearchFieldEnabled,
+  getSearchTerm,
 } from '../../state/shared-components.reducer';
 
 @Component({
@@ -27,7 +28,7 @@ export class CustomHeaderComponent implements OnInit {
 
   @Input() set searchTerm(term: string) {
     this.store.dispatch(
-      SharedComponentsActions.setCurrentSidebarOption({ searchTerm: term })
+      SharedComponentsActions.setCurrentSearchTerm({ searchTerm: term })
     );
   }
 
@@ -52,6 +53,15 @@ export class CustomHeaderComponent implements OnInit {
 
   toggleSearchField() {
     this.store.dispatch(SharedComponentsActions.toggleSearchField());
+  }
+
+  showAllResults() {
+    this.store.dispatch(
+      SharedComponentsActions.setCurrentSearchTerm({ searchTerm: '' })
+    );
+    if (this.isSearchFieldEnabled) {
+      this.store.dispatch(SharedComponentsActions.toggleSearchField());
+    }
   }
 
   shouldHideTitle(): boolean {

@@ -6,8 +6,9 @@
     <span class="spacer"></span>
     <span
       [style.marginLeft.px]="isSearchFieldEnabled ? 180 : 0"
-      class="font-20-bold font-color-white"
+      class="font-20-bold font-color-white clickable"
       *ngIf="!shouldHideTitle()"
+      (click)="showAllResults()"
       >Covid Tracker</span
     >
     <span class="spacer"></span>

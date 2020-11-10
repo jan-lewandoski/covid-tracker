@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {
   getIsLoading,
   getIsMobileView,
+  getIsSearchFieldEnabled,
   getIsSidebarOpened,
 } from './shared/state/shared-components.reducer';
 import { State } from './state/app.state';
@@ -53,10 +54,10 @@ export class AppComponent implements OnInit {
   changeOption(option: string) {
     if (option === 'World') option = '';
     this.store.dispatch(
-      SharedComponentsActions.setCurrentSidebarOption({ searchTerm: option })
+      SharedComponentsActions.setCurrentSearchTerm({ searchTerm: option })
     );
-    if (this.isMobileView) this.hideSidebar();
-    document.body.scrollTop = document.documentElement.scrollTop = 0;
+    this.store.dispatch(SharedComponentsActions.disableSearchField());
+    if (this.isMobileView()) this.hideSidebar();
   }
 
   isMobileView(): boolean {
