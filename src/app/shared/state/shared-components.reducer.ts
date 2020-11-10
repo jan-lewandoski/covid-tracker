@@ -11,6 +11,7 @@ export interface SharedComponentsState {
   searchTerm: string;
   isSearchFieldEnabled: boolean;
   isLoading: boolean;
+  isMobileView: boolean;
 }
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   searchTerm: null,
   isSearchFieldEnabled: false,
   isLoading: true,
+  isMobileView: false,
 };
 
 const getSharedComponentsFeatureState = createFeatureSelector<
@@ -42,6 +44,11 @@ export const getIsSearchFieldEnabled = createSelector(
 export const getIsLoading = createSelector(
   getSharedComponentsFeatureState,
   (state) => state.isLoading
+);
+
+export const getIsMobileView = createSelector(
+  getSharedComponentsFeatureState,
+  (state) => state.isMobileView
 );
 
 export const sharedComponentsReducer = createReducer<SharedComponentsState>(
@@ -97,6 +104,24 @@ export const sharedComponentsReducer = createReducer<SharedComponentsState>(
       return {
         ...state,
         isLoading: false,
+      };
+    }
+  ),
+  on(
+    SharedComponentsActions.enableMobileView,
+    (state): SharedComponentsState => {
+      return {
+        ...state,
+        isMobileView: true,
+      };
+    }
+  ),
+  on(
+    SharedComponentsActions.disableMobileView,
+    (state): SharedComponentsState => {
+      return {
+        ...state,
+        isMobileView: false,
       };
     }
   )

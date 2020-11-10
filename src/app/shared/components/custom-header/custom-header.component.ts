@@ -9,16 +9,18 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { State } from 'src/app/state/app.state';
 import * as SharedComponentsActions from '../../state/shared-components.actions';
-import { getIsSearchFieldEnabled } from '../../state/shared-components.reducer';
+import {
+  getIsMobileView,
+  getIsSearchFieldEnabled,
+} from '../../state/shared-components.reducer';
 
 @Component({
   selector: 'custom-header',
   templateUrl: './custom-header.component.html',
   styleUrls: ['./custom-header.component.scss'],
 })
-export class CustomHeaderComponent implements OnInit, OnDestroy {
+export class CustomHeaderComponent implements OnInit {
   isSearchFieldEnabled: boolean;
-  subscribers = new Subscription();
   isMobileView: boolean;
   _searchTerm: string;
   readonly MOBILE_WIDTH: number = 600;
@@ -36,11 +38,12 @@ export class CustomHeaderComponent implements OnInit, OnDestroy {
   constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
-    this.subscribers.add(
-      this.store.select(getIsSearchFieldEnabled).subscribe((isEnabled) => {
-        this.isSearchFieldEnabled = isEnabled;
-      })
-    );
+    this.store.select(getIsSearchFieldEnabled).subscribe((isEnabled) => {
+      this.isSearchFieldEnabled = isEnabled;
+    });
+    this.store.select(getIsMobileView).subscribe((isMobileView) => {
+      this.isMobileView = isMobileView;
+    });
   }
 
   toggleSidebar() {
@@ -53,14 +56,5 @@ export class CustomHeaderComponent implements OnInit, OnDestroy {
 
   shouldHideTitle(): boolean {
     return this.isMobileView && this.isSearchFieldEnabled;
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.isMobileView = window.innerWidth < this.MOBILE_WIDTH;
-  }
-
-  ngOnDestroy(): void {
-    this.subscribers.unsubscribe();
   }
 }

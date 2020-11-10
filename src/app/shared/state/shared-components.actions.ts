@@ -13,3 +13,9 @@ export const enableLoading = createAction('[Shared Components] Enable Loading');
 export const disableLoading = createAction(
   '[Shared Components] Disable Loading'
 );
+export const enableMobileView = createAction(
+  '[Shared Components] Enable Mobile View'
+);
+export const disableMobileView = createAction(
+  '[Shared Components] Disable Mobile View'
+);

@@ -1,8 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import {
   getIsLoading,
+  getIsMobileView,
   getIsSidebarOpened,
 } from './shared/state/shared-components.reducer';
 import { State } from './state/app.state';
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
 
   isSidebarOpened$ = new Observable<boolean>();
   isLoading$ = new Observable<boolean>();
-  isMobileView: boolean = window.innerWidth < this.MOBILE_WIDTH;
+  isMobileView$ = new Observable<boolean>();
 
   readonly options: string[] = [
     'World',
@@ -33,8 +34,12 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
+    if (this.isMobileView()) {
+      this.enableMobileView();
+    }
     this.isSidebarOpened$ = this.store.select(getIsSidebarOpened);
     this.isLoading$ = this.store.select(getIsLoading);
+    this.isMobileView$ = this.store.select(getIsMobileView);
   }
 
   toggleSidebar() {
@@ -54,8 +59,20 @@ export class AppComponent implements OnInit {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
+  isMobileView(): boolean {
+    return window.innerWidth < this.MOBILE_WIDTH;
+  }
+
+  enableMobileView() {
+    this.store.dispatch(SharedComponentsActions.enableMobileView());
+  }
+
+  disableMobileView() {
+    this.store.dispatch(SharedComponentsActions.disableMobileView());
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    this.isMobileView = window.innerWidth < this.MOBILE_WIDTH;
+    this.isMobileView() ? this.enableMobileView() : this.disableMobileView();
   }
 }

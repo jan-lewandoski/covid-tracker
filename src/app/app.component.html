@@ -2,12 +2,12 @@
 <custom-header></custom-header>
 <mat-sidenav-container class="example-container">
   <mat-sidenav
-    [style.marginTop.px]="isMobileView ? 56 : 64"
+    [style.marginTop.px]="(isMobileView$ | async) ? 56 : 64"
     (closedStart)="hideSidebar()"
-    [mode]="isMobileView ? 'over' : 'side'"
+    [mode]="(isMobileView$ | async) ? 'over' : 'side'"
     [opened]="isSidebarOpened$ | async"
-    [style.width]="isMobileView ? '250px' : '25%'"
-    [style.position]="isMobileView ? 'fixed' : ''"
+    [style.width]="(isMobileView$ | async) ? '250px' : '25%'"
+    [style.position]="(isMobileView$ | async) ? 'fixed' : ''"
     fixedInViewport="true"
   >
     <mat-nav-list *ngFor="let option of options">
