@@ -1,5 +1,5 @@
-import { SidebarState } from '../shared/state/sidebar.reducer';
+import { SharedComponentsState } from '../shared/state/shared-components.reducer';
 
 export interface State {
-  sidebarState: SidebarState;
+  sharedComponentsState: SharedComponentsState;
 }

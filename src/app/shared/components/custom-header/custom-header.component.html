@@ -4,10 +4,27 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span class="spacer"></span>
-    <span class="font-20-bold font-color-white">Covid Tracker</span>
+    <span
+      [style.marginLeft.px]="isSearchFieldEnabled ? 180 : 0"
+      class="font-20-bold font-color-white"
+      *ngIf="!shouldHideTitle()"
+      >Covid Tracker</span
+    >
     <span class="spacer"></span>
-    <button mat-icon-button>
+    <button
+      mat-icon-button
+      *ngIf="!isSearchFieldEnabled; else showSearchField"
+      (click)="toggleSearchField()"
+    >
       <mat-icon>search</mat-icon>
     </button>
+    <ng-template #showSearchField>
+      <custom-input
+        type="withAction"
+        iconName="cancel"
+        (onCloseClicked)="toggleSearchField()"
+        [(value)]="searchTerm"
+      ></custom-input>
+    </ng-template>
   </mat-toolbar>
 </p>

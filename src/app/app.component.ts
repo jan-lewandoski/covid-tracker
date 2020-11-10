@@ -1,9 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getIsSidebarOpened } from './shared/state/sidebar.reducer';
+import { getIsSidebarOpened } from './shared/state/shared-components.reducer';
 import { State } from './state/app.state';
-import * as DashboardActions from 'src/app/shared/state/sidebar.actions';
+import * as SharedComponentsActions from 'src/app/shared/state/shared-components.actions';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import * as DashboardActions from 'src/app/shared/state/sidebar.actions';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  readonly MOBILE_WIDTH: number = 500;
+  readonly MOBILE_WIDTH: number = 600;
 
   isSidebarOpened$ = new Observable<boolean>();
   isMobileView: boolean = window.innerWidth < this.MOBILE_WIDTH;
@@ -33,17 +33,17 @@ export class AppComponent implements OnInit {
   }
 
   toggleSidebar() {
-    this.store.dispatch(DashboardActions.toggleSidebar());
+    this.store.dispatch(SharedComponentsActions.toggleSidebar());
   }
 
   hideSidebar() {
-    this.store.dispatch(DashboardActions.hideSidebar());
+    this.store.dispatch(SharedComponentsActions.hideSidebar());
   }
 
   changeOption(option: string) {
     if (option === 'World') option = '';
     this.store.dispatch(
-      DashboardActions.setCurrentSidebarOption({ searchTerm: option })
+      SharedComponentsActions.setCurrentSidebarOption({ searchTerm: option })
     );
     if (this.isMobileView) this.hideSidebar();
     document.body.scrollTop = document.documentElement.scrollTop = 0;

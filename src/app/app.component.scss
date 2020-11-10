@@ -8,3 +8,7 @@
   display: grid;
   gap: 1em;
 }
+
+::ng-deep .mat-nav-list {
+  padding: 0 !important;
+}

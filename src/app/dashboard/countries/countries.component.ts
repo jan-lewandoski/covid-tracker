@@ -5,7 +5,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/state/app.state';
-import { getSearchTerm } from 'src/app/shared/state/sidebar.reducer';
+import { getSearchTerm } from 'src/app/shared/state/shared-components.reducer';
 
 @Component({
   selector: 'countries',

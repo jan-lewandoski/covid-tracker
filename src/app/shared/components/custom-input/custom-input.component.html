@@ -1,0 +1,19 @@
+<div>
+  <mat-form-field>
+    <input
+      #inputRef
+      matInput
+      type="text"
+      [(ngModel)]="value"
+      (ngModelChange)="valueChange.emit(value)"
+    />
+  </mat-form-field>
+  <button
+    *ngIf="type === 'withAction'"
+    mat-button
+    mat-icon-button
+    (click)="closeClicked()"
+  >
+    <mat-icon>{{ iconName }}</mat-icon>
+  </button>
+</div>

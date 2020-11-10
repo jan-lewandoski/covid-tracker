@@ -1,6 +1,7 @@
 <custom-header></custom-header>
 <mat-sidenav-container class="example-container">
   <mat-sidenav
+    [style.marginTop.px]="isMobileView ? 56 : 64"
     (closedStart)="hideSidebar()"
     [mode]="isMobileView ? 'over' : 'side'"
     [opened]="isSidebarOpened$ | async"

@@ -9,10 +9,17 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { StoreModule } from '@ngrx/store';
-import { sidebarReducer } from './state/sidebar.reducer';
+import { CustomInputComponent } from './components/custom-input/custom-input.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { sharedComponentsReducer } from './state/shared-components.reducer';
 
 @NgModule({
-  declarations: [CustomHeaderComponent, CustomCountryCardComponent],
+  declarations: [
+    CustomHeaderComponent,
+    CustomCountryCardComponent,
+    CustomInputComponent,
+  ],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -21,13 +28,19 @@ import { sidebarReducer } from './state/sidebar.reducer';
     MatDividerModule,
     MatSidenavModule,
     MatListModule,
-    StoreModule.forFeature('sidebar', sidebarReducer),
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    StoreModule.forFeature('sharedComponents', sharedComponentsReducer),
   ],
   exports: [
     CustomHeaderComponent,
     CustomCountryCardComponent,
     MatSidenavModule,
     MatListModule,
+    CustomInputComponent,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}
