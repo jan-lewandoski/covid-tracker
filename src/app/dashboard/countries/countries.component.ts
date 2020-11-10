@@ -5,11 +5,16 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { map, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/state/app.state';
-import { getSearchTerm } from 'src/app/shared/state/shared-components.reducer';
+import {
+  getIsMobileView,
+  getSearchTerm,
+} from 'src/app/shared/state/shared-components.reducer';
 import {
   disableLoading,
   enableLoading,
 } from 'src/app/shared/state/shared-components.actions';
+import { MatDialog } from '@angular/material/dialog';
+import { CountryDetailsComponent } from './country-details/country-details.component';
 
 @Component({
   selector: 'countries',
@@ -20,7 +25,11 @@ export class CountriesComponent implements OnInit {
   countriesData$ = new Observable<Country[]>();
   searchQuery$ = new Observable<string>();
 
-  constructor(private apiService: ApiService, private store: Store<State>) {}
+  constructor(
+    private apiService: ApiService,
+    private store: Store<State>,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.countriesData$ = this.apiService.getCountriesData().pipe(
@@ -31,5 +40,12 @@ export class CountriesComponent implements OnInit {
       tap(() => this.store.dispatch(disableLoading()))
     );
     this.searchQuery$ = this.store.select(getSearchTerm);
+  }
+
+  openCountryDetails(country: Country) {
+    this.dialog.open(CountryDetailsComponent, {
+      width: '85%',
+      data: country,
+    });
   }
 }

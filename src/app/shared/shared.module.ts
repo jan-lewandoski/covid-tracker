@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { sharedComponentsReducer } from './state/shared-components.reducer';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CustomSpinnerComponent } from './components/custom-spinner/custom-spinner.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CustomSpinnerComponent } from './components/custom-spinner/custom-spinn
     ReactiveFormsModule,
     MatInputModule,
     NgxSpinnerModule,
+    MatDialogModule,
     StoreModule.forFeature('sharedComponents', sharedComponentsReducer),
   ],
   exports: [
@@ -46,6 +48,7 @@ import { CustomSpinnerComponent } from './components/custom-spinner/custom-spinn
     FormsModule,
     ReactiveFormsModule,
     CustomSpinnerComponent,
+    MatDialogModule,
   ],
 })
 export class SharedModule {}

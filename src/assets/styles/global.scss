@@ -6,14 +6,17 @@
   flex: 1 1 auto;
 }
 .mt-1 {
-  margin-top: 1em;
+  margin-top: 1em !important;
 }
 .mb-1 {
-  margin-bottom: 1em;
+  margin-bottom: 1em !important;
 }
 .mt-2 {
-  margin-top: 2em;
+  margin-top: 2em !important;
 }
 .mb-2 {
-  margin-bottom: 2em;
+  margin-bottom: 2em !important;
+}
+.text-center {
+  text-align: center;
 }

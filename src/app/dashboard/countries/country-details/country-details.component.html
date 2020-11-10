@@ -1,0 +1,14 @@
+<mat-dialog-content>
+  <div>
+    <p class="font-30-bold text-center">Last 30 days in {{ data.country }}</p>
+  </div>
+  <mat-divider [style.margin.px]="'25px 0'"></mat-divider>
+  <div>
+    <p class="font-18-normal text-center mb-2">
+      Daily number of infected people
+    </p>
+    <canvas #dailyInfectedCanvas id="dailyInfectedCanvas">{{
+      dailyInfectedChart
+    }}</canvas>
+  </div>
+</mat-dialog-content>

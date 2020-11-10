@@ -6,6 +6,6 @@
         | search: 'continent, country':(searchQuery$ | async)
     "
     [country]="country"
-    class="clickable"
+    (onCountryClick)="openCountryDetails($event)"
   ></custom-country-card>
 </div>
