@@ -9,3 +9,7 @@ export const setCurrentSidebarOption = createAction(
 export const toggleSearchField = createAction(
   '[Shared Components] Toggle Search Field'
 );
+export const enableLoading = createAction('[Shared Components] Enable Loading');
+export const disableLoading = createAction(
+  '[Shared Components] Disable Loading'
+);

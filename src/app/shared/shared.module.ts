@@ -13,12 +13,15 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { sharedComponentsReducer } from './state/shared-components.reducer';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { CustomSpinnerComponent } from './components/custom-spinner/custom-spinner.component';
 
 @NgModule({
   declarations: [
     CustomHeaderComponent,
     CustomCountryCardComponent,
     CustomInputComponent,
+    CustomSpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +34,7 @@ import { sharedComponentsReducer } from './state/shared-components.reducer';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
+    NgxSpinnerModule,
     StoreModule.forFeature('sharedComponents', sharedComponentsReducer),
   ],
   exports: [
@@ -41,6 +45,7 @@ import { sharedComponentsReducer } from './state/shared-components.reducer';
     CustomInputComponent,
     FormsModule,
     ReactiveFormsModule,
+    CustomSpinnerComponent,
   ],
 })
 export class SharedModule {}

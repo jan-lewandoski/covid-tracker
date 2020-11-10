@@ -10,31 +10,38 @@ export interface SharedComponentsState {
   isSidebarOpened: boolean;
   searchTerm: string;
   isSearchFieldEnabled: boolean;
+  isLoading: boolean;
 }
 
 const initialState = {
   isSidebarOpened: false,
   searchTerm: null,
   isSearchFieldEnabled: false,
+  isLoading: true,
 };
 
-const getSidebarFeatureState = createFeatureSelector<SharedComponentsState>(
-  'sharedComponents'
-);
+const getSharedComponentsFeatureState = createFeatureSelector<
+  SharedComponentsState
+>('sharedComponents');
 
 export const getIsSidebarOpened = createSelector(
-  getSidebarFeatureState,
+  getSharedComponentsFeatureState,
   (state) => state.isSidebarOpened
 );
 
 export const getSearchTerm = createSelector(
-  getSidebarFeatureState,
+  getSharedComponentsFeatureState,
   (state) => state.searchTerm
 );
 
 export const getIsSearchFieldEnabled = createSelector(
-  getSidebarFeatureState,
+  getSharedComponentsFeatureState,
   (state) => state.isSearchFieldEnabled
+);
+
+export const getIsLoading = createSelector(
+  getSharedComponentsFeatureState,
+  (state) => state.isLoading
 );
 
 export const sharedComponentsReducer = createReducer<SharedComponentsState>(
@@ -72,6 +79,24 @@ export const sharedComponentsReducer = createReducer<SharedComponentsState>(
       return {
         ...state,
         isSearchFieldEnabled: !state.isSearchFieldEnabled,
+      };
+    }
+  ),
+  on(
+    SharedComponentsActions.enableLoading,
+    (state): SharedComponentsState => {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+  ),
+  on(
+    SharedComponentsActions.disableLoading,
+    (state): SharedComponentsState => {
+      return {
+        ...state,
+        isLoading: false,
       };
     }
   )

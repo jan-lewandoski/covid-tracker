@@ -1,7 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { getIsSidebarOpened } from './shared/state/shared-components.reducer';
+import { BehaviorSubject, Observable } from 'rxjs';
+import {
+  getIsLoading,
+  getIsSidebarOpened,
+} from './shared/state/shared-components.reducer';
 import { State } from './state/app.state';
 import * as SharedComponentsActions from 'src/app/shared/state/shared-components.actions';
 
@@ -14,6 +17,7 @@ export class AppComponent implements OnInit {
   readonly MOBILE_WIDTH: number = 600;
 
   isSidebarOpened$ = new Observable<boolean>();
+  isLoading$ = new Observable<boolean>();
   isMobileView: boolean = window.innerWidth < this.MOBILE_WIDTH;
 
   readonly options: string[] = [
@@ -30,6 +34,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.isSidebarOpened$ = this.store.select(getIsSidebarOpened);
+    this.isLoading$ = this.store.select(getIsLoading);
   }
 
   toggleSidebar() {
