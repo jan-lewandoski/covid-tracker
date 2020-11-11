@@ -9,6 +9,7 @@ import {
 } from './shared/state/shared-components.reducer';
 import { State } from './state/app.state';
 import * as SharedComponentsActions from 'src/app/shared/state/shared-components.actions';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +36,9 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
+    if (environment.production) {
+      this.showAppInfo();
+    }
     if (this.isMobileView()) {
       this.enableMobileView();
     }
@@ -75,5 +79,12 @@ export class AppComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.isMobileView() ? this.enableMobileView() : this.disableMobileView();
+  }
+
+  private showAppInfo() {
+    console.log('+-------------------+');
+    console.log('|  👋 Production!   |');
+    console.log('|     ver 1.0.0     |');
+    console.log('+-------------------+');
   }
 }
