@@ -10,6 +10,7 @@ import { State } from './state/app.state';
 import * as SharedComponentsActions from 'src/app/shared/state/shared-components.actions';
 import { environment } from 'src/environments/environment';
 import { SidebarOption } from './core/models';
+import { PwaUpdateService } from './core/services/pwa-update.service';
 
 @Component({
   selector: 'app-root',
@@ -51,7 +52,10 @@ export class AppComponent implements OnInit {
     },
   ];
 
-  constructor(private store: Store<State>) {}
+  constructor(
+    private store: Store<State>,
+    private pwaService: PwaUpdateService
+  ) {}
 
   ngOnInit(): void {
     if (environment.production) {
