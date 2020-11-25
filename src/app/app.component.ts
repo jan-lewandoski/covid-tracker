@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 import {
   getIsLoading,
   getIsMobileView,
-  getIsSearchFieldEnabled,
   getIsSidebarOpened,
 } from './shared/state/shared-components.reducer';
 import { State } from './state/app.state';
 import * as SharedComponentsActions from 'src/app/shared/state/shared-components.actions';
 import { environment } from 'src/environments/environment';
+import { SidebarOption } from './core/models';
 
 @Component({
   selector: 'app-root',
@@ -31,6 +31,24 @@ export class AppComponent implements OnInit {
     'Australia/Oceania',
     'Africa',
     'Asia',
+  ];
+
+  readonly bottomOptions: SidebarOption[] = [
+    {
+      title: 'Author',
+      iconName: 'public',
+      url: 'https://www.linkedin.com/in/jan-lewandoski-8716471a3/',
+    },
+    {
+      title: 'Data Provider',
+      iconName: 'coronavirus',
+      url: 'https://github.com/disease-sh/API',
+    },
+    {
+      title: "Project's Github",
+      iconName: 'code',
+      url: 'https://github.com/jan-lewandoski/covid-tracker',
+    },
   ];
 
   constructor(private store: Store<State>) {}

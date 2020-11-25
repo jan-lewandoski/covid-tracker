@@ -1,0 +1,20 @@
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon style="margin-right: 5px" *ngIf="titleIconName">{{
+          titleIconName
+        }}</mat-icon
+        ><span style="margin-top: 3px" *ngIf="title">{{ title }}</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-nav-list>
+      <div *ngFor="let option of options">
+        <a [href]="option?.url" mat-list-item class="font-14-normal">
+          <mat-icon style="margin-right: 5px">{{ option?.iconName }}</mat-icon
+          >{{ option.title }}</a
+        >
+      </div>
+    </mat-nav-list>
+  </mat-expansion-panel></mat-accordion
+>

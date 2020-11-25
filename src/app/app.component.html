@@ -15,6 +15,13 @@
       }}</a>
       <mat-divider></mat-divider>
     </mat-nav-list>
+    <mat-nav-list class="bottom-options">
+      <custom-expansion-panel
+        [options]="bottomOptions"
+        title="About the project"
+        titleIconName="info"
+      ></custom-expansion-panel>
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <custom-spinner [isLoading$]="isLoading$"></custom-spinner>

@@ -16,6 +16,8 @@ import { sharedComponentsReducer } from './state/shared-components.reducer';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CustomSpinnerComponent } from './components/custom-spinner/custom-spinner.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CustomExpansionPanelComponent } from './components/custom-expansion-panel/custom-expansion-panel.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CustomCountryCardComponent,
     CustomInputComponent,
     CustomSpinnerComponent,
+    CustomExpansionPanelComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +40,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     NgxSpinnerModule,
     MatDialogModule,
+    MatExpansionModule,
     StoreModule.forFeature('sharedComponents', sharedComponentsReducer),
   ],
   exports: [
@@ -49,6 +53,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     CustomSpinnerComponent,
     MatDialogModule,
+    MatIconModule,
+    CustomExpansionPanelComponent,
   ],
 })
 export class SharedModule {}

@@ -9,6 +9,12 @@
   gap: 1em;
 }
 
+.bottom-options {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 ::ng-deep .mat-nav-list {
   padding: 0 !important;
 }
